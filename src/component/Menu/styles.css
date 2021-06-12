@@ -1,0 +1,9 @@
+.container {
+    width: 0px;
+    height: 0px;
+    display: flex;
+    flex-direction: row;
+}
+.logo-container {
+    background-color: rgb(170, 169, 169);
+}

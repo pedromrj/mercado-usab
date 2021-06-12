@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#button-cadastro {
+    margin-top: 5%;
+    margin-left: 55%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding-right: 10%;
+}
+
+.input-login {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5%;
+}
+
+#lb-esq-senha {
+    margin-right: 40%;
+    font-size: 12px;
+}
+
+.container-form .label-form {
+    margin-top: 10%;
+}
+
+#label-esqueceu-senha {
+    margin-right: 15%;
+}
+
+#image-container {
+    margin-left: 50px;
+}
+
+.container-button {
+    margin-top: 10%;
+}
+
+.container-button-cadastro {
+    margin-top: 5%;
+}
+
+.container-cadastro {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button-login {
+    box-shadow: 0px 0px 5px 1px #ff9900;
+	background-color:#ff9900;
+	border-radius:27px;
+	border:1px solid #ff9900;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Trebuchet MS;
+	font-size:14px;
+	font-weight:bold;
+	padding:5px 15px;
+	text-decoration:none;
+    margin-left: 80%;
+	text-shadow:0px 0px 0px #2f6627;
+}
+
+.button-login:hover {
+	background-color:#ff9900;
+}
+
+.button-login:active {
+	position:relative;
+	top:1px;
+}
