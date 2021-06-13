@@ -4,36 +4,22 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
     },
-    backButton: {
-        marginRight: theme.spacing(1),
-    },
     instructions: {
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
     },
+    fistStep: {
+        color: 'blue'
+    }
 }));
 
 function getSteps() {
     return ['Carrinho', 'Confimar Dados', 'Finalizar Compra'];
-}
-
-function getStepContent(stepIndex) {
-    switch (stepIndex) {
-        case 0:
-            return 'Select campaign settings...';
-        case 1:
-            return 'What is an ad group anyways?';
-        case 2:
-            return 'This is the bit I really care about!';
-        default:
-            return 'Unknown stepIndex';
-    }
 }
 
 export default function Cart() {
@@ -49,9 +35,6 @@ export default function Cart() {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
 
     return (
         <div className={classes.root}>
@@ -62,10 +45,10 @@ export default function Cart() {
                     </Step>
                 ))}
             </Stepper>
-            <div>
+            <div >
                 {activeStep === 0 ? (
-                    <div>
-                        <h1> fist steps</h1>
+                    <div className={classes.fistStep}>
+                        <p> asdasdsa </p>
                     </div>
                 ) : (
                     <div>
