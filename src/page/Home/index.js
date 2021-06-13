@@ -42,7 +42,7 @@ function Home() {
                 <TextField id="standard-basic" label="Search"/>
                 <div className="icons">
                     <div className="carrinho">
-                        <Link to="/carrinho"><img src={shopcart} /></Link>
+                        <Link to="/cart"><img src={shopcart} /></Link>
                     </div>
                     <img onClick={handleClick} id="person" src={person} />    
                     <Menu

@@ -20,11 +20,13 @@ const Login = () => {
     });
 
     function findUser(email) {
-        Users.forEach(x => {
-            if(x.email === email) {
-                return x;
+        for (let index = 0; index < Users.length; index++) {
+            const e = Users[index];
+            if(e.email === email){
+                return e;
             }
-        });
+            
+        }
         return undefined;
     }
 
