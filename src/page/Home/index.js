@@ -5,15 +5,13 @@ import {Menu, Button,MenuItem,TextField, GridList,GridListTile,GridListTileBar,I
 import logo from "../../assets/logo.jpg";
 import shopcart from "../../assets/shopcart.svg";
 import person from "../../assets/person.svg";
-import tileData from './tileData';
+import data from './tileData';
 import image1 from "../../assets/image/super3.jpeg";
-import { findByLabelText } from "@testing-library/dom";
 
 const useStyles = makeStyles((theme) => ({
     gridList: {
-      display: "flex",
-      alignItems: "center",
-      transform: 'translateZ(0)'
+      transform: 'translateZ(0)',
+      width: "97%"
     },
     titleBar: {
       background:
@@ -23,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 function Home() {
+    const [tileData, setData] = useState(data);
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -34,12 +33,26 @@ function Home() {
       setAnchorEl(null);
     };
 
+    //TODO Ajustar filtro pois tornalo reativo para deixar só o que está na lista do filtro.
+    function handlerChange(e) {
+        var temp = data.filter(x => {
+            return x.title.includes(e.target.value)
+        });
+
+        if (e.target.value === "") {
+            setData(data);       
+        } else {
+            setData(temp)
+        }
+        console.log(tileData);
+    }
+
     const classes = useStyles();
     return (
-        <div className="container">
+        <div className="container-home">
             <div className="header">
                 <img height="100px" src={logo} />    
-                <TextField id="standard-basic" label="Search"/>
+                <TextField onChange={handlerChange} id="standard-basic" label="Search"/>
                 <div className="icons">
                     <div className="carrinho">
                         <Link to="/carrinho"><img src={shopcart} /></Link>
@@ -59,10 +72,11 @@ function Home() {
             </div>
             <div className="body">
                 <div className="grade">
+                    <h2>Supermercados.</h2>
                     <GridList cellHeight={200} spacing={10} className={classes.gridList}>
                         {tileData.map((tile) => (
                         <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
-                            <Link to="/supermercado/nome">
+                            <Link to="/supermercado/nome" >
                                 <img src={image1} alt={tile.title} />
                                 <GridListTileBar
                                 title={tile.title}
