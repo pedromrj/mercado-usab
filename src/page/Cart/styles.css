@@ -1,6 +1,42 @@
-.first-step {
+.container {
     display: flex;
-    height: 5vw;
-    width:5vw;
-    background:red;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E5E4E2;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+
+.search {
+    margin-left: 30%;
+}
+
+#person {
+    margin-left: 10px;
+}
+
+.carrinho {
+    margin-top: 6%;
+    margin-right: 40%;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    margin-right: 28%;
+}
+
+.titleBar {
+    background:
+        'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, '+ 'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+}
+
+.grade {
+    border-radius: 10px;
+}
+
+.body-cart {
+    background-color: blue;
 }
