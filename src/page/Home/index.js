@@ -7,6 +7,7 @@ import shopcart from "../../assets/shopcart.svg";
 import person from "../../assets/person.svg";
 import data from './tileData';
 import image1 from "../../assets/image/super3.jpeg";
+import arrowDown from "../../assets/arrowup.svg";
 
 const useStyles = makeStyles((theme) => ({
     gridList: {
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
     const [tileData, setData] = useState(data);
+    const [find, setFind] = useState(true);
 
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -40,11 +42,38 @@ function Home() {
         });
 
         if (e.target.value === "") {
-            setData(data);       
+            setData(data);
+            setFind(false);
+            setFind(true);       
         } else {
-            setData(temp)
+            setData(temp);
+            setFind(false);
+            setFind(true);
         }
-        console.log(tileData);
+    }
+
+    function getListaPopulada() {
+        return (
+            <ul>
+                {tileData.map(data => (
+                <li key={data.key}>
+                    <img src={logo} height="75" alt="nome do mercado"/>
+
+                    <strong>Nome: </strong>
+                    <p>{data.title}</p>
+
+                    <strong>DESCRIÇÃO:</strong>
+                    <p>{"Um local com preço ideal para você."}</p>
+                    
+                    <Link to="/supermercado/items" >Selecionar</Link>
+                </li>
+                ))}
+            </ul>
+        );  
+    }
+
+    function getDivVazia() {
+        return <ul><li>Não Encontrado</li></ul>;
     }
 
     const classes = useStyles();
@@ -57,7 +86,8 @@ function Home() {
                     <div className="carrinho">
                         <Link to="/carrinho"><img src={shopcart} /></Link>
                     </div>
-                    <img onClick={handleClick} id="person" src={person} />    
+                    <img id="person" src={person} />    
+                    <img onClick={handleClick} src={arrowDown}/>
                     <Menu
                         anchorEl={anchorEl}
                         keepMounted
@@ -71,28 +101,11 @@ function Home() {
                 </div>
             </div>
             <div className="body">
-                <div className="grade">
-                    <h2>Supermercados.</h2>
-                    <GridList cellHeight={200} spacing={10} className={classes.gridList}>
-                        {tileData.map((tile) => (
-                        <GridListTile key={tile.img} cols={tile.featured ? 2 : 1} rows={tile.featured ? 2 : 1}>
-                            <Link to="/supermercado/nome" >
-                                <img src={image1} alt={tile.title} />
-                                <GridListTileBar
-                                title={tile.title}
-                                titlePosition="top"
-                                actionIcon={
-                                    <IconButton aria-label={`star ${tile.title}`}>
-                                    </IconButton>
-                                }
-                                actionPosition="left"
-                                className={classes.titleBar}
-                            />
-                            </Link>
-                        </GridListTile>
-                        ))}
-                    </GridList>
-                </div>
+                    <div className="profile-container">
+                        <h2>Supermercados.</h2>
+                        {!find ? getDivVazia():getListaPopulada()}    
+                    </div>
+                
             </div>
         </div>        
     );
