@@ -16,14 +16,17 @@ import Avatar from '@material-ui/core/Avatar';
 import { Menu, Button, MenuItem, TextField, GridList, GridListTile, GridListTileBar, IconButton, StarBorderIcon } from "@material-ui/core";
 import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
-
-
-
-
+import CartItems from "../../server/cart.json";
+import "./styles.css"
 
 const ColorlibConnector = withStyles({
     root: {
-        background: 'red'
+        "& $completed": {
+            color: "lightgreen"
+          },
+          "& $active": {
+            color: "pink"
+          },
     },
     line: {
         height: 3,
@@ -56,11 +59,7 @@ const useStyles = makeStyles((theme) => ({
     secondStep: {
         background: '#E5E4E2'
     },
-    gridList: {
-        display: "flex",
-        alignItems: "center",
-        transform: 'translateZ(0)'
-    },
+
 }));
 
 
@@ -77,9 +76,23 @@ export default function Cart() {
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
+
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
+
+    const createCart = () => {
+        return (
+            <div className="itens">
+                {CartItems.map(el =>
+                    <div className="item">
+                        <img className="image" src={el.img} />
+                        <h2>{el.nome}</h2>
+                        <h2>R$ {el.preco}</h2>
+                    </div>)}
+            </div>
+        )
+    }
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -128,26 +141,9 @@ export default function Cart() {
                 <div >
                     {activeStep === 0 ? (
                         <div className={classes.fistStep}>
-                            <List className={classes.list}>
-                                <ListItem alignItems="flex-start">
-                                    <ListItemAvatar>
-                                        <Avatar alt="imagem do produto" src="/static/images/avatar/1.jpg" />
-                                    </ListItemAvatar>
-                                    <ListItemText
-                                        primary="NOME DO PRODUTO"
-                                        secondary={
-                                            <div
-                                                className={classes.inline}
-                                            >
-                                                <p>Infos produto</p>
-                                                <p>Preço produto    </p>
-                                            </div>
-
-                                        }
-                                    />
-                                </ListItem>
-                                <Divider variant="inset" component="li" />
-                            </List>
+                            <div>
+                                {createCart()}
+                            </div>
                         </div>
                     ) : (
                         <div className={classes.secondStep}>

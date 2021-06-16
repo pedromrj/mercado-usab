@@ -1,0 +1,14 @@
+[
+    {
+        "nome":"ps4",
+        "qntd":1,
+        "preco": 2200.50,
+        "img":"https://images-americanas.b2w.io/produtos/01/00/img/134537/1/134537153_1GG.jpg"
+    },
+    {
+        "nome":"ps4",
+        "qntd":1,
+        "preco": 2200.50,
+        "img": "https://images-americanas.b2w.io/produtos/01/00/img/134537/1/134537153_1GG.jpg"
+    }
+]
