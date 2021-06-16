@@ -2,25 +2,58 @@
     width: 150px;
     height: 150px;
     border-radius: 2vw;
-  }
-  .item {
+}
+
+.item {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     margin-top: 5px;
     background-color: #f5f5f5;
-    width:70vw;
-    margin-left: 5vw;
-  }
+    width: 70vw;
+    margin-left: 15vw;
+}
 
-  .item h2 {
-      margin-top: 6vh;
-      margin-left: 8vw;
-  }
+.item h2 {
+    margin-top: 6vh;
+    margin-left: 8vw;
+}
 
+.qtditems {
+    margin-top: 6vh;
+    margin-left: 8vw;
+    display: flex;
+    flex-direction: row;
+}
+.value-total {
+    margin-left: 60%;
+    margin-top: 1vw;
+}
+.buttons {
+    margin-left: 80%;
+    margin-top: 1vw;
+}
+.secondStep {
+    background-color: #f5f5f5;
+    width:50vw;
+    height:50vh;
+    margin-left: 25%;
+    margin-top: 1vw;
+}
+.infos {
+    display: flex;
+    flex-direction:column;
+}
+.MuiFormControl-root {
+    margin-top: 1vw !important;
+}
 .MuiStepIcon-root.MuiStepIcon-active {
     color: #fabc03 !important;
 }
 
 .MuiStepIcon-root.MuiStepIcon-completed {
     color: #fabc03 !important;
+}
+
+.MuiStepper-alternativeLabel {
+    background: #f5f5f5;
 }

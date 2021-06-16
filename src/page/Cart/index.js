@@ -1,33 +1,24 @@
 import React, { useState } from "react";
+import "./styles.css"
+import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import CartItems from "../../server/cart.json";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import StepConnector from '@material-ui/core/StepConnector';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
+import arrowUp from "../../assets/arrowdown.svg";
+import arrowDown from "../../assets/arrowup.svg";
 import logo from "../../assets/logo.jpg";
 import shopcart from "../../assets/shopcart.svg";
 import person from "../../assets/person.svg";
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import { Menu, Button, MenuItem, TextField, GridList, GridListTile, GridListTileBar, IconButton, StarBorderIcon } from "@material-ui/core";
-import Typography from '@material-ui/core/Typography';
-import { Link } from "react-router-dom";
-import CartItems from "../../server/cart.json";
-import "./styles.css"
+import { Menu, Button, MenuItem, TextField } from "@material-ui/core";
+import Swal from 'sweetalert2'
+
+
 
 const ColorlibConnector = withStyles({
-    root: {
-        "& $completed": {
-            color: "lightgreen"
-          },
-          "& $active": {
-            color: "pink"
-          },
-    },
     line: {
         height: 3,
         border: 0,
@@ -56,30 +47,49 @@ const useStyles = makeStyles((theme) => ({
     fistStep: {
         background: '#E5E4E2'
     },
-    secondStep: {
-        background: '#E5E4E2'
-    },
+
 
 }));
-
-
-
 
 function getSteps() {
     return ['Carrinho', 'Finalizar Compra'];
 }
 
-
 export default function Cart() {
     const classes = useStyles();
+    const history = useHistory();
     const [anchorEl, setAnchorEl] = useState(null);
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
 
     const handleNext = () => {
+        if (activeStep >= 1) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Compra efetuada com sucesso',
+                showConfirmButton: false,
+                timer: 2000
+              }).then( () => {
+                history.push("/home");
+              })
+        }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+       
     };
+
+    const valueTotal = () => {
+        let value = 0;
+        for (let i = 0; i < CartItems.length; i++) {
+            value += (CartItems[i].preco * CartItems[i].qntd)
+
+        }
+        return (
+            <div className="value-total">
+                <h2> Valor Total: R$ {value}</h2>
+            </div>
+        )
+    }
 
     const createCart = () => {
         return (
@@ -89,6 +99,12 @@ export default function Cart() {
                         <img className="image" src={el.img} />
                         <h2>{el.nome}</h2>
                         <h2>R$ {el.preco}</h2>
+                        <div className="qtditems">
+                            <img src={arrowUp} />
+                            <label>{el.qntd}</label>
+                            <img src={arrowDown} />
+                        </div>
+                        <h2>R$ {el.preco * el.qntd}</h2>
                     </div>)}
             </div>
         )
@@ -143,18 +159,37 @@ export default function Cart() {
                         <div className={classes.fistStep}>
                             <div>
                                 {createCart()}
+                                <h2>{valueTotal()}</h2>
                             </div>
                         </div>
                     ) : (
-                        <div className={classes.secondStep}>
-                            <h1>second step</h1>
+                        <div className="secondStep">
+                            <div className="infos">
+                                <TextField className="text-input" label="Número do cartão" variant="outlined" />
+                                <TextField className="text-input" label="Código de segurança" variant="outlined" />
+                                <TextField className="text-input" label="Nome do dono do cartão" variant="outlined" />
+                                <TextField className="text-input" label="Mes de vencimento do cartão" variant="outlined" />
+                                <TextField className="text-input" label="Ano de vencimento do cartão" variant="outlined" />
+
+
+                            </div>
                         </div>
 
                     )}
                 </div>
-                <Button variant="contained" color="primary" onClick={handleNext}>
-                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                </Button>
+                <div className="buttons">
+                    {activeStep === 0 ? (
+                        <div></div>
+                    ) : (
+                        <Button variant="contained" color="primary" onClick={handleBack}>
+                            Voltar
+                        </Button>
+                    )}
+                    <Button variant="contained" color="primary" onClick={handleNext}>
+                        {activeStep === 1 ? 'Finalizar' : 'Próximo'}
+                    </Button>
+
+                </div>
 
             </div>
         </div>
