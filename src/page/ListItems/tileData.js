@@ -69,7 +69,7 @@ const tileData = [
       key:12,
       name: "pampers",
       img: "https://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1089076225",
-      valor: 33.90
+      valor: 45.00
     },
     {
       key:13,
