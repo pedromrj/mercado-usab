@@ -118,7 +118,7 @@ function Home() {
                 <Grid container spacing={1}>
                   <Grid item>
                     <ButtonBase className={classes.image}>
-                      <img className={classes.img} alt="complex" height="90" src={logo} />
+                      <img className={classes.img} alt="complex" height="90" src={title.img} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs={12} sm container>
