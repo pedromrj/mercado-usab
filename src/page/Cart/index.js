@@ -70,18 +70,20 @@ export default function Cart() {
                 title: 'Compra efetuada com sucesso',
                 showConfirmButton: false,
                 timer: 2000
-              }).then( () => {
+            }).then(() => {
                 history.push("/home");
-              })
+            })
         }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-       
+
     };
 
     const valueTotal = () => {
+        let cartLocalStorage = JSON.parse(window.localStorage.getItem('cart'));
+
         let value = 0;
-        for (let i = 0; i < CartItems.length; i++) {
-            value += (CartItems[i].preco * CartItems[i].qntd)
+        for (let i = 0; i < cartLocalStorage.length; i++) {
+            value += (cartLocalStorage[i].valor)
 
         }
         return (
@@ -92,19 +94,20 @@ export default function Cart() {
     }
 
     const createCart = () => {
+        let cartLocalStorage = JSON.parse(window.localStorage.getItem('cart'));
         return (
             <div className="itens">
-                {CartItems.map(el =>
+                {cartLocalStorage.map(el =>
                     <div className="item">
                         <img className="image" src={el.img} />
                         <h2>{el.nome}</h2>
-                        <h2>R$ {el.preco}</h2>
-                        <div className="qtditems">
+                        <h2>R$ {el.valor}</h2>
+                        <div className="qtditemsCart">
                             <img src={arrowUp} />
                             <label>{el.qntd}</label>
                             <img src={arrowDown} />
                         </div>
-                        <h2>R$ {el.preco * el.qntd}</h2>
+                        <h2>R$ {el.valor}</h2>
                     </div>)}
             </div>
         )
