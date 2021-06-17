@@ -115,7 +115,7 @@ export default function ListItems() {
                     <div className="qtditems">
                       <img src={add} />
                       <label>1</label>
-                      <img src={less} />
+                      <img className="less" src={less} />
                     </div>
 
                   </Grid>
