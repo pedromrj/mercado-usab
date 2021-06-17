@@ -10,7 +10,6 @@ import add from "../../assets/add.svg";
 import less from "../../assets/less.svg";
 import tileData from './tileData';
 import ArrowBack from "../../assets/arrow_back.svg";
-import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     marginRight: "10px",
     marginBottom: "10px",
-    maxWidth: 300,
+    maxWidth: 350,
     maxHeight: 100
   },
   image: {
@@ -77,7 +76,7 @@ export default function ListItems() {
         <img height="100px" src={logo} />
         <div className="icons">
           <div className="carrinho">
-            <Link to="/carrinho"><img src={shopcart} /></Link>
+            <Link to="/cart"><img src={shopcart} /></Link>
           </div>
           <img onClick={handleClick} id="person" src={person} />
           <Menu
@@ -115,8 +114,8 @@ export default function ListItems() {
                       </Typography>
                     </Grid>
                     <div className="qtditems">
-                      <img src={add} />
-                      <label>1</label>
+                      <img src={add} className="add"/>
+                      <label className="value-qntd">1</label>
                       <img className="less" src={less} />
                     </div>
 

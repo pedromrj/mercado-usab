@@ -86,7 +86,7 @@ const Login = () => {
     }
     
     return (
-        <div className="container">
+        <div className="container-login">
             <div className="container-image">
                 <img id="imagem-container"src={ShopImage} height="600px" alt="Imagem ilustrando a entrega de uma encomenda." />
             </div>

@@ -93,6 +93,10 @@ export default function Cart() {
         )
     }
 
+    const goToCart = () => {
+        history.push("home")
+    }
+
     const createCart = () => {
         let cartLocalStorage = JSON.parse(window.localStorage.getItem('cart'));
         return (
@@ -129,7 +133,7 @@ export default function Cart() {
 
         <div className={classes.root}>
             <div className="header">
-                <img height="100px" src={logo} />
+                <img height="100px" src={logo} className="logo-cart" onClick={goToCart}/>
                 <TextField id="standard-basic" label="Search" />
                 <div className="icons">
                     <div className="carrinho">
@@ -174,8 +178,6 @@ export default function Cart() {
                                 <TextField className="input-secondStep" label="Nome do cartão" variant="outlined" />
                                 <TextField className="input-secondStep" label="Mes de vencimento" variant="outlined" />
                                 <TextField className="input-secondStep" label="Ano de vencimentog" variant="outlined" />
-
-
                             </div>
                         </div>
 

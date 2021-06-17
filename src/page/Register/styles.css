@@ -20,13 +20,14 @@ body {
     margin-left: 55%;
 }
 
-.container {
+.container-register {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.container {
+.container-register {
     padding-right: 10%;
 }
 

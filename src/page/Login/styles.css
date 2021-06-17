@@ -9,13 +9,13 @@ body {
     margin-left: 55%;
 }
 
-.container {
+.container-login {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container {
+.container-login {
     padding-right: 10%;
 }
 

@@ -79,7 +79,7 @@ const Register = () => {
     }
     
     return (
-        <div className="container">
+        <div className="container-register">
             <div className="container-image">
                 <img id="imagem-container"src={ShopImage} height="600px" alt="Imagem ilustrando a entrega de uma encomenda." />
             </div>
@@ -96,10 +96,10 @@ const Register = () => {
                         <TextField className="input-cadastro" className="standard-basic" value={user.email} onChange={handlerEmail} label="E-mail"/>
                     </div>
                     <div className="input-form">
-                        <TextField className="input-cadastro" className="standard-basic" onChange={handlerPassword} error={isValidPass.error} label="Password"/>
+                        <TextField className="input-cadastro" type="password" className="standard-basic" onChange={handlerPassword} error={isValidPass.error} label="Password"/>
                     </div>
                     <div className="input-form">
-                        <TextField className="input-cadastro" className="standard-basic" onChange={handlerConfirmPassword} error={isValidPass.error}label="Confirm Password"/>
+                        <TextField className="input-cadastro" type="password" className="standard-basic" onChange={handlerConfirmPassword} error={isValidPass.error}label="Confirm Password"/>
                         {logError()}
                     </div>
                     <div className="container-button">
