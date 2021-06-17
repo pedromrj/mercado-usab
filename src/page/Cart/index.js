@@ -8,8 +8,8 @@ import StepConnector from '@material-ui/core/StepConnector';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import arrowUp from "../../assets/arrowdown.svg";
-import arrowDown from "../../assets/arrowup.svg";
+import add from "../../assets/add.svg";
+import less from "../../assets/less.svg";
 import logo from "../../assets/logo.jpg";
 import shopcart from "../../assets/shopcart.svg";
 import person from "../../assets/person.svg";
@@ -65,6 +65,7 @@ export default function Cart() {
 
     const handleNext = () => {
         if (activeStep >= 1) {
+            window.localStorage.clear();
             Swal.fire({
                 icon: 'success',
                 title: 'Compra efetuada com sucesso',
@@ -103,9 +104,9 @@ export default function Cart() {
                         <h2>{el.nome}</h2>
                         <h2>R$ {el.valor}</h2>
                         <div className="qtditemsCart">
-                            <img src={arrowUp} />
-                            <label>{el.qntd}</label>
-                            <img src={arrowDown} />
+                            <img src={add} />
+                            <label className="qntdItens">1</label>
+                            <img src={less} />
                         </div>
                         <h2>R$ {el.valor}</h2>
                     </div>)}
@@ -168,11 +169,12 @@ export default function Cart() {
                     ) : (
                         <div className="secondStep">
                             <div className="infos">
-                                <TextField className="text-input" label="Número do cartão" variant="outlined" />
-                                <TextField className="text-input" label="Código de segurança" variant="outlined" />
-                                <TextField className="text-input" label="Nome do dono do cartão" variant="outlined" />
-                                <TextField className="text-input" label="Mes de vencimento do cartão" variant="outlined" />
-                                <TextField className="text-input" label="Ano de vencimento do cartão" variant="outlined" />
+                                <h2>Finalizar Compra</h2>
+                                <TextField className="input-secondStep" label="Número do cartão" variant="outlined" />
+                                <TextField className="input-secondStep" label="Código de segurança" variant="outlined" />
+                                <TextField className="input-secondStep" label="Nome do cartão" variant="outlined" />
+                                <TextField className="input-secondStep" label="Mes de vencimento" variant="outlined" />
+                                <TextField className="input-secondStep" label="Ano de vencimento" variant="outlined" />
 
 
                             </div>
@@ -184,11 +186,11 @@ export default function Cart() {
                     {activeStep === 0 ? (
                         <div></div>
                     ) : (
-                        <Button variant="contained" color="primary" onClick={handleBack}>
+                        <Button variant="contained" color="primary" onClick={handleBack} className="button-cart">
                             Voltar
                         </Button>
                     )}
-                    <Button variant="contained" color="primary" onClick={handleNext}>
+                    <Button variant="contained" color="primary" onClick={handleNext} className="button-cart">
                         {activeStep === 1 ? 'Finalizar' : 'Próximo'}
                     </Button>
 
