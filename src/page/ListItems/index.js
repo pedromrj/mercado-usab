@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import Snackbar from "@material-ui/core/Snackbar";
 import { TextField, Menu, MenuItem, Grid, Paper, makeStyles, Typography, ButtonBase } from "@material-ui/core";
 import logo from "../../assets/logo.jpg";
 import shopcart from "../../assets/shopcart.svg";
@@ -9,9 +10,7 @@ import add from "../../assets/add.svg";
 import less from "../../assets/less.svg";
 import tileData from './tileData';
 import ArrowBack from "../../assets/arrow_back.svg";
-import CartData from "../../server/cart.json";
-
-
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListItems() {
 
-
+  const [open, setOpen] = useState(false);
 
   const initValue = []
 
@@ -52,15 +51,18 @@ export default function ListItems() {
     setAnchorEl(event.currentTarget);
   };
 
-
-  
-
-
   function addToCart(title) {
     setCart([...cart, title])
     window.localStorage.setItem("cart", JSON.stringify(cart))
-    
+    setOpen(true)
+
   }
+
+  const handleToCloseSnack = (event, reason) => {
+    if ("clickaway" == reason) return;
+    setOpen(false);
+  };
+  
 
 
   const handleClose = () => {
@@ -126,6 +128,16 @@ export default function ListItems() {
                 <button id="button-add-cart" className="button-add-cart" type="submit" onClick={() => { addToCart(title) }}>Adicionar ao carrinho</button>
               </Grid>
             </Paper>
+            <Snackbar
+              anchorOrigin={{
+                horizontal: "left",
+                vertical: "bottom",
+              }}
+              open={open}
+              autoHideDuration={3000}
+              message="Item adicionado com sucesso"
+              onClose={handleToCloseSnack}
+            />
           </div>
         ))}
       </div>

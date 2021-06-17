@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./styles.css"
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import CartItems from "../../server/cart.json";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import StepConnector from '@material-ui/core/StepConnector';
 import Stepper from '@material-ui/core/Stepper';
@@ -174,7 +173,7 @@ export default function Cart() {
                                 <TextField className="input-secondStep" label="Código de segurança" variant="outlined" />
                                 <TextField className="input-secondStep" label="Nome do cartão" variant="outlined" />
                                 <TextField className="input-secondStep" label="Mes de vencimento" variant="outlined" />
-                                <TextField className="input-secondStep" label="Ano de vencimento" variant="outlined" />
+                                <TextField className="input-secondStep" label="Ano de vencimentog" variant="outlined" />
 
 
                             </div>
